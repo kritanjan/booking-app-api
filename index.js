@@ -30,6 +30,8 @@ mongoose.connection.on('connected', () => {
 
 
 //MIDDLEWARES
+app.use(express.json())
+
 app.use('/auth', authRoute)
 app.use('/hotels', hotelsRoute)
 app.use('/rooms', roomsRoute)
