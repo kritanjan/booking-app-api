@@ -37,6 +37,16 @@ app.use('/hotels', hotelsRoute)
 app.use('/rooms', roomsRoute)
 app.use('/users',usersRoute)
 
+app.use((err,req,res,next)=>{
+    const errorStatus = err.status || 500
+    const errorMsg = err.msg || 'Something went wrong'
+    return res.status(errorStatus).json({
+        success: false,
+        message: errorMsg,
+        status: errorStatus,
+        stack: err.stack
+    })
+})
 
 // App Routes
 

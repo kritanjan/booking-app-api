@@ -37,22 +37,22 @@ router.delete('/:id', async (req,res)=>{
 })
 
 // READ ROUTE(SPECIFIC)
-router.get('/:id', async (req,res)=>{  
+router.get('/:id', async (req,res,next)=>{  
     try {
         const hotel = await Hotel.findById(req.params.id)
         res.status(200).send(hotel)
     } catch (error) {
-        res.send(error).status(500)
+        next(error)
     }
 })
 
 // READ ROUTE (ALL)
-router.get('/', async (req,res) =>{
+router.get('/', async (req,res,next) =>{
     try {
         const hotel = await Hotel.find();
         res.json(hotel).status(200)        
     } catch (error) {
-        res.send(error).status(500)
+        next(error)
     }
 })
 
