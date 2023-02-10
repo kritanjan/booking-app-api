@@ -1,7 +1,9 @@
 import User from "../models/User.js"
-import { createError } from "../utils/error.js";
+import { createError } from "../utils/createError.js";
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
+
+// REGISTER
 
 export const register = async (req, res, next) => {
     try {
@@ -20,6 +22,9 @@ export const register = async (req, res, next) => {
         next(error)
     }
 }
+
+
+// LOG IN
 
 export const logIn = async (req, res, next) => {
     try {
